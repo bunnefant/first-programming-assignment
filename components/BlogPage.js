@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import { useHistory } from 'react-router-native'
 import axios from 'axios'
-import BlogPost from './BlogCard';
+import BlogCard from './BlogCard';
 
 
 const BlogPage = () => {
@@ -19,7 +19,7 @@ const BlogPage = () => {
   }, [])
 
   const renderPost = ({item}) => {
-    return <BlogPost 
+    return <BlogCard 
         username={item.userId} 
         title={item.title} 
         text={item.text} 
