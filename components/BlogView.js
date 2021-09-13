@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import { useHistory } from 'react-router-native'
 import axios from 'axios'
 import BlogPost from './BlogPost';
@@ -18,21 +18,23 @@ const BlogView = () => {
     retrievePosts()
   }, [])
 
-  const renderPosts = () => {
-    return posts.map(post => {
-      return <BlogPost 
-        key={post.id} 
-        username={post.userId} 
-        title={post.title} 
-        text={post.text} 
-        likes={post.likes}
-      /> 
-    })
+  const renderPost = ({item}) => {
+    return <BlogPost 
+        username={item.userId} 
+        title={item.title} 
+        text={item.text} 
+        likes={item.likes}
+    /> 
   }
 
   return (
     <View style={styles.container}>
-      {renderPosts()}
+      <FlatList
+        data={posts}
+        renderItem={renderPost}
+        keyExtractor={post => post.id.toString()}
+        showsVerticalScrollIndicator={false}
+      />
       <TouchableOpacity
         style={styles.userButton}
         onPress={() => history.push("/post")}
