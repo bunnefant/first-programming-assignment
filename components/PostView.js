@@ -14,6 +14,7 @@ const PostView = () => {
 
   const handlePress = async () => {
     try {
+      console.log(currentUser)
       await axios.post(`https://first-programming-assignment.herokuapp.com/api/users/${currentUser.id}/posts`, {
         title, text
       })

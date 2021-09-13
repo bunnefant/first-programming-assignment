@@ -11,20 +11,19 @@ const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState();
 
     const registerUser = async (username, password) => {
-        const user = await axios.post(`https://first-programming-assignment.herokuapp.com/auth/register`, {
+        const res = await axios.post(`https://first-programming-assignment.herokuapp.com/auth/register`, {
             id: username,
             password: password
         })
-        console.log(user)
-        setCurrentUser(user)
+        setCurrentUser(res.data)
     }
 
     const loginUser = async (username, password) => {
-        const user = await axios.post(`https://first-programming-assignment.herokuapp.com/auth/login`, {
+        const res = await axios.post(`https://first-programming-assignment.herokuapp.com/auth/login`, {
             id: username,
             password: password
         })
-        setCurrentUser(user)
+        setCurrentUser(res.data)
     };
 
     const logoutUser = () => {
