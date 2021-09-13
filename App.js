@@ -2,10 +2,10 @@ import React from 'react';
 import { NativeRouter, Switch } from 'react-router-native';
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
-import BlogView from './components/BlogView';
-import PostView from './components/PostView';
+import LoginPage from './components/LoginPage';
+import RegistrationPage from './components/RegistrationPage';
+import BlogPage from './components/BlogPage';
+import PostPage from './components/PostPage';
 import AuthProvider from './contexts/AuthContext';
 import LogoutPage from './components/LogoutPage';
 
@@ -15,11 +15,11 @@ export default function App() {
     <AuthProvider>
       <NativeRouter>
         <Switch>
-          <PublicRoute path='/login' component={LoginForm}/>
+          <PublicRoute path='/login' component={LoginPage}/>
           <PrivateRoute path='/logout' component={LogoutPage}/>
-          <PublicRoute path='/register' component={RegisterForm}/>
-          <PrivateRoute exact path={['/', '/home']} component={BlogView}/>
-          <PrivateRoute exact path='/post' component={PostView}/>
+          <PublicRoute path='/register' component={RegistrationPage}/>
+          <PrivateRoute exact path={['/', '/home']} component={BlogPage}/>
+          <PrivateRoute exact path='/post' component={PostPage}/>
         </Switch>
       </NativeRouter>
     </AuthProvider>
