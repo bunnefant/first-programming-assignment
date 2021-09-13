@@ -14,8 +14,8 @@ export default function App() {
     <View>
       <NativeRouter>
         <Switch>
-          <PublicRoute path={['/', '/login']} component={LoginForm}/>
-          <PublicRoute path='/register' component={RegisterForm}/>
+          <Route exact path='/' component={LoginForm}/>
+          <Route exact path='/register' component={RegisterForm}/>
         </Switch>
       </NativeRouter>
     </View>

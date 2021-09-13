@@ -29,7 +29,7 @@ const LoginForm = ({ history }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.userButton}
-          onClick={() => history.push("/register")}
+          onPress={() => history.push("/register")}
         >
           <Text>Sign Up</Text>
         </TouchableOpacity>
