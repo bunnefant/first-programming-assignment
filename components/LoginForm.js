@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import {Link} from 'react-router-native';
 
 
-export default function LoginForm() {
+
+const LoginForm = ({ history }) => {
   return (
     <>
       <View style={styles.container}>
@@ -28,12 +28,10 @@ export default function LoginForm() {
           <Text>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => alert("Signup Event")}
           style={styles.userButton}
+          onClick={() => history.push("/register")}
         >
-          <Link to='/register'>
-            <Text>Sign Up</Text>
-          </Link>
+          <Text>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -67,3 +65,5 @@ const styles = StyleSheet.create({
     padding: 15
   },
 });
+
+export default LoginForm;

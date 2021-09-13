@@ -3,8 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 
-
-const RegisterForm = () => {
+const RegisterForm = ({history}) => {
   return (
     <>
       <View style={styles.container}>
@@ -31,16 +30,17 @@ const RegisterForm = () => {
       </View>
       <View style={styles.container}>
         <TouchableOpacity
-          onPress={() => alert("Login Event")}
-          style={styles.userButton}
-        >
-          <Text>Already Have an Account?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
           onPress={() => alert("Signup Event")}
           style={styles.userButton}
         >
           <Text>Sign Up</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => history.push("/login")}
+          style={styles.userButton}
+        >
+          <Text>Already Have an Account?</Text>
         </TouchableOpacity>
       </View>
     </>
