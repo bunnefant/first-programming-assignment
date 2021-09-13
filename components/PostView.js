@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useHistory } from 'react-router-native'
 import { useAuth } from '../contexts/AuthContext'
 import axios from 'axios'
@@ -23,8 +23,7 @@ const PostView = () => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss()} accessible={false}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.welcome}>Post a message!</Text>
         <TextInput
           style={styles.input}
@@ -58,8 +57,7 @@ const PostView = () => {
         >
           <Text>Log out</Text>
         </TouchableOpacity>
-      </View>
-    </TouchableWithoutFeedback>
+      </ScrollView>
 
   );
 }
@@ -68,8 +66,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#202729',
-    alignItems: 'center',
-    justifyContent: 'center',
     padding: 40
   },
   welcome: {

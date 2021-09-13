@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 
 const BlogPost = ({username, title, text, likes}) => {
@@ -17,6 +17,12 @@ const BlogPost = ({username, title, text, likes}) => {
       <Text style={styles.text}>
         {likes}
       </Text>
+      <TouchableOpacity
+        style={styles.userButton}
+        onPress={() => alert('liking')}
+      >
+        <Text>Like</Text>
+      </TouchableOpacity>
     </View>
   );
 
@@ -41,7 +47,14 @@ const styles = StyleSheet.create({
   text: {
     alignItems: 'center',
     color: '#fbfbfb',
-  }
+  },
+  userButton : {
+    backgroundColor: '#56b081',
+    borderRadius: 9,
+    marginBottom: 10,
+    textAlign: 'center',
+    padding: 15
+  },
 });
 
 export default BlogPost;
