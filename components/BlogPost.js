@@ -34,8 +34,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   username: {
-    alignItems: 'left',
-    color: '#fbfbfb',
+    color: '#fbfbfb'
   },
   text: {
     alignItems: 'center',
