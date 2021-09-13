@@ -17,6 +17,8 @@ const PostView = () => {
       await axios.post(`https://first-programming-assignment.herokuapp.com/api/users/${currentUser.id}/posts`, {
         title, text
       })
+      onChangeTitle('')
+      onChangeText('')
     } catch (err) {
       console.log(err.message)
     }
