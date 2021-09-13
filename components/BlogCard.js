@@ -1,25 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import axios from 'axios'
 
+const BlogCard = (card) => {
 
-const BlogCard = ({username, title, text, likes}) => {
+  const [post, setPost] = useState(card)
+
+  const handlePress = async () => {
+    const res = await axios.put(`https://first-programming-assignment.herokuapp.com/api/posts/${post.id}`, {})
+    setPost(res.data)
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.username}>
-        {username}
+        {post.userId}
       </Text>
       <Text style={styles.text}>
-        {title}
+        {post.title}
       </Text>
       <Text style={styles.text}>
-        {text}
+        {post.text}
       </Text>
       <Text style={styles.text}>
-        {likes}
+        {post.likes}
       </Text>
       <TouchableOpacity
         style={styles.userButton}
-        onPress={() => alert('liking')}
+        onPress={handlePress}
       >
         <Text>Like</Text>
       </TouchableOpacity>

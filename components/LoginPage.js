@@ -27,7 +27,7 @@ const LoginPage = () => {
         <TextInput
           style={styles.input}
           value={username}
-          placeholder="username"
+          placeholder="Username"
           onChangeText={onChangeUsername}
         />
         <TextInput

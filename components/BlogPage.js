@@ -19,8 +19,9 @@ const BlogPage = () => {
   }, [])
 
   const renderPost = ({item}) => {
-    return <BlogCard 
-        username={item.userId} 
+    return <BlogCard
+        id={item.id} 
+        userId={item.userId} 
         title={item.title} 
         text={item.text} 
         likes={item.likes}
