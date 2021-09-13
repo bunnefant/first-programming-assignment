@@ -5,6 +5,8 @@ import {NativeRouter, Switch, Route} from 'react-router-native';
 import PublicRoute from './routes/PublicRoute';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
+import BlogView from './components/BlogView';
+import PostView from './components/PostView';
 
 
 
@@ -16,6 +18,8 @@ export default function App() {
         <Switch>
           <Route exact path='/' component={LoginForm}/>
           <Route exact path='/register' component={RegisterForm}/>
+          <Route exact path='/home' component={BlogView}/>
+          <Route exact path='/post' component={PostView}/>
         </Switch>
       </NativeRouter>
     </View>

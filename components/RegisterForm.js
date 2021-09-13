@@ -7,11 +7,7 @@ const RegisterForm = ({history}) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.welcome}>Login To The App Here</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-        />
+        <Text style={styles.welcome}>Register Here</Text>
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -19,11 +15,6 @@ const RegisterForm = ({history}) => {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          secureTextEntry
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Re-enter Password"
           secureTextEntry
         />
         <StatusBar style="auto" />
@@ -49,24 +40,42 @@ const RegisterForm = ({history}) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#202729',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 40
+  },
   welcome: {
     fontSize: 30,
     textAlign: 'center',
-    color: '#000',
-    padding: 15
+    color: '#fbfbfb',
+    padding: 30
   },
   input : {
-    backgroundColor: '#fff',
-    marginBottom: 10,
+    backgroundColor: '#fbfbfb',
+    borderColor: '#56b081',
+    borderWidth: 3,
+    borderRadius: 9,
+    marginBottom: 5,
+    marginTop: 5,
     textAlign: 'center',
     padding: 15
   },
   userButton : {
-    backgroundColor: '#fff',
+    backgroundColor: '#56b081',
+    borderRadius: 9,
     marginBottom: 10,
     textAlign: 'center',
     padding: 15
   },
+  buttonContainer : {
+    backgroundColor: '#202729',
+    flexDirection: "row",
+    width: "5%",
+    textAlign: 'center',
+  }
 });
 
 export default RegisterForm;

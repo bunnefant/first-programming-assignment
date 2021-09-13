@@ -3,41 +3,27 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 
-
-const LoginForm = ({ history }) => {
+const PostView = ({history}) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.welcome}>Login Here</Text>
+        <Text style={styles.welcome}>Post a message!</Text>
         <TextInput
           style={styles.input}
-          placeholder="Username"
+          multiline={true}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-        />
-        <StatusBar style="auto" />
-      </View>
-      <View style={styles.container}>
+
         <TouchableOpacity
-          onPress={() => alert("Login Event")}
+          onPress={() => alert("posting a message")}
           style={styles.userButton}
         >
-          <Text>Login</Text>
+          <Text>Post</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.userButton}
-          onPress={() => history.push("/register")}
-        >
-          <Text>Sign Up</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.userButton}
           onPress={() => history.push("/home")}
+          style={styles.userButton}
         >
-          <Text>Go to home screen</Text>
+          <Text>Home</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -51,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#202729',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 30
+    padding: 40
   },
   welcome: {
     fontSize: 30,
@@ -64,10 +50,10 @@ const styles = StyleSheet.create({
     borderColor: '#56b081',
     borderWidth: 3,
     borderRadius: 9,
-    marginBottom: 10,
-    marginTop: 10,
+    marginBottom: 5,
+    marginTop: 5,
     textAlign: 'center',
-    padding: 15
+    padding: 40
   },
   userButton : {
     backgroundColor: '#56b081',
@@ -76,12 +62,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 15
   },
-  buttonContainer : {
-    backgroundColor: '#202729',
-    flexDirection: "row",
-    width: "5%",
-    textAlign: 'center',
-  }
 });
 
-export default LoginForm;
+export default PostView;
