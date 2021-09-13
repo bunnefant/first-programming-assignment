@@ -1,34 +1,66 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-native'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useAuth } from '../contexts/AuthContext'
 
 
-const RegisterForm = ({history}) => {
+const RegisterForm = () => {
+
+  const [email, onChangeEmail] = useState('')
+  const [password, onChangePassword] = useState('')
+  const { registerUser } = useAuth()
+  const history = useHistory()
+
+  const handlePress = async () => {
+    try {
+      await registerUser(email, password)
+      history.push('/')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <>
       <View style={styles.container}>
+<<<<<<< HEAD
         <Text style={styles.welcome}>Register Here</Text>
         <TextInput
           style={styles.input}
           placeholder="Username"
+=======
+        <Text style={styles.welcome}>Register</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={onChangeEmail}
+>>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
+<<<<<<< HEAD
           secureTextEntry
+=======
+          secureTextEntry={true}
+          value={password}
+          onChangeText={onChangePassword}
+>>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
         />
         <StatusBar style="auto" />
       </View>
       <View style={styles.container}>
         <TouchableOpacity
-          onPress={() => alert("Signup Event")}
+          onPress={handlePress}
           style={styles.userButton}
         >
           <Text>Sign Up</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => history.push("/")}
+          onPress={() => history.push("/login")}
           style={styles.userButton}
         >
           <Text>Already Have an Account?</Text>
@@ -53,6 +85,7 @@ const styles = StyleSheet.create({
     color: '#fbfbfb',
     padding: 30
   },
+<<<<<<< HEAD
   input : {
     backgroundColor: '#fbfbfb',
     borderColor: '#56b081',
@@ -66,6 +99,16 @@ const styles = StyleSheet.create({
   userButton : {
     backgroundColor: '#56b081',
     borderRadius: 9,
+=======
+  input: {
+    backgroundColor: '#fff',
+    marginBottom: 10,
+    textAlign: 'center',
+    padding: 15
+  },
+  userButton: {
+    backgroundColor: '#fff',
+>>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
     marginBottom: 10,
     textAlign: 'center',
     padding: 15
