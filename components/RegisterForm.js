@@ -1,43 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-native'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useAuth } from '../contexts/AuthContext'
 
 
-const RegisterForm = ({history}) => {
+const RegisterForm = () => {
+
+  const [email, onChangeEmail] = useState('')
+  const [password, onChangePassword] = useState('')
+  const { registerUser } = useAuth()
+  const history = useHistory()
+
+  const handlePress = async () => {
+    try {
+      await registerUser(email, password)
+      history.push('/')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.welcome}>Login To The App Here</Text>
+        <Text style={styles.welcome}>Register</Text>
         <TextInput
           style={styles.input}
           placeholder="Email"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
+          value={email}
+          onChangeText={onChangeEmail}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
-          secureTextEntry
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Re-enter Password"
-          secureTextEntry
+          secureTextEntry={true}
+          value={password}
+          onChangeText={onChangePassword}
         />
         <StatusBar style="auto" />
       </View>
       <View style={styles.container}>
         <TouchableOpacity
-          onPress={() => alert("Signup Event")}
+          onPress={handlePress}
           style={styles.userButton}
         >
           <Text>Sign Up</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => history.push("/")}
+          onPress={() => history.push("/login")}
           style={styles.userButton}
         >
           <Text>Already Have an Account?</Text>

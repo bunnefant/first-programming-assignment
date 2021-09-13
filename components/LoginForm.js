@@ -17,6 +17,7 @@ export default function LoginForm() {
       await loginUser(email, password)
       history.push('/')
     } catch (err) {
+      console.log(process.env.BACKEND_URL)
       console.log(err.message)
     }
   }
@@ -84,5 +85,3 @@ const styles = StyleSheet.create({
     padding: 15
   },
 });
-
-export default LoginForm;
