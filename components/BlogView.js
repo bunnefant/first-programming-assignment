@@ -1,53 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useHistory } from 'react-router-native'
+import axios from 'axios'
 import BlogPost from './BlogPost';
 
-const BlogView = ({history}) => {
-  const posts = [
-    {
-      username: "user1",
-      text: "hello, beautiful day today in atlanta",
-      title: "Weather Today!"
-    },
-    {
-      username: "user2",
-      text: "I love dogs",
-      title: "Animals are awesome!"
-    },
-    {
-      username: "user3",
-      text: "I love cats",
-      title: "Animals!"
-    },
-    {
-      username: "user4",
-      text: "I have so much hw",
-      title: "Studying..."
-    },
-    {
-      username: "user5",
-      text: "I'm about to play ping pong",
-      title: "Enjoying with friends!"
+
+const BlogView = () => {
+
+  const [posts, setPosts] = useState([])
+  const history = useHistory()
+
+  useEffect(() => {
+    const retrievePosts = async () => {
+      const res = await axios.get('https://first-programming-assignment.herokuapp.com/api/posts')
+      setPosts(res.data)
     }
-  ]
+    retrievePosts()
+  }, [])
 
-  let postList = posts.map((item, index) => {
-    return (
-      <BlogPost key={index} username={item.username} text={item.text} title={item.title}/>
-    )
-  });
-
-  console.log(postList);
+  const renderPosts = () => {
+    return posts.map(post => {
+      return <BlogPost 
+        key={post.id} 
+        username={post.userId} 
+        title={post.title} 
+        text={post.text} 
+        likes={post.likes}
+      /> 
+    })
+  }
 
   return (
     <View style={styles.container}>
-      { postList }
+      {renderPosts()}
       <TouchableOpacity
         style={styles.userButton}
         onPress={() => history.push("/post")}
       >
         <Text>Make a post</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.userButton}
+        onPress={() => history.push("/logout")}
+      >
+        <Text>Log out</Text>
       </TouchableOpacity>
     </View>
   );

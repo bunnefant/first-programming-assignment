@@ -10,16 +10,19 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState();
 
-    const registerUser = async (email, password) => {
+    const registerUser = async (username, password) => {
         const user = await axios.post(`https://first-programming-assignment.herokuapp.com/auth/register`, {
-            email, password
+            id: username,
+            password: password
         })
+        console.log(user)
         setCurrentUser(user)
     }
 
-    const loginUser = async (email, password) => {
+    const loginUser = async (username, password) => {
         const user = await axios.post(`https://first-programming-assignment.herokuapp.com/auth/login`, {
-            email, password
+            id: username,
+            password: password
         })
         setCurrentUser(user)
     };

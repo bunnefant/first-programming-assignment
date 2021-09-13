@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useHistory } from 'react-router-native'
+import { useAuth } from '../contexts/AuthContext'
+import axios from 'axios'
 
 
-const PostView = ({history}) => {
+const PostView = () => {
+
+  const [title, onChangeTitle] = useState('')
+  const [text, onChangeText] = useState('')
+  const {currentUser} = useAuth()
+  const history = useHistory()
+
+  const handlePress = async () => {
+    try {
+      await axios.post(`https://first-programming-assignment.herokuapp.com/api/users/${currentUser.id}/posts`, {
+        title, text
+      })
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.welcome}>Post a message!</Text>
         <TextInput
           style={styles.input}
+          value={title}
+          placeholder="Title"
+          onChangeText={onChangeTitle}
+        />
+        <TextInput
+          style={styles.input}
           multiline={true}
+          value={text}
+          placeholder='Text'
+          onChangeText={onChangeText}
         />
 
         <TouchableOpacity
-          onPress={() => alert("posting a message")}
+          onPress={handlePress}
           style={styles.userButton}
         >
           <Text>Post</Text>
@@ -24,6 +51,12 @@ const PostView = ({history}) => {
           style={styles.userButton}
         >
           <Text>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.userButton}
+          onPress={() => history.push("/logout")}
+        >
+          <Text>Log out</Text>
         </TouchableOpacity>
       </View>
     </>

@@ -7,14 +7,14 @@ import { useAuth } from '../contexts/AuthContext'
 
 const RegisterForm = () => {
 
-  const [email, onChangeEmail] = useState('')
+  const [username, onChangeUsername] = useState('')
   const [password, onChangePassword] = useState('')
   const { registerUser } = useAuth()
   const history = useHistory()
 
   const handlePress = async () => {
     try {
-      await registerUser(email, password)
+      await registerUser(username, password)
       history.push('/')
     } catch (err) {
       console.log(err.message)
@@ -28,8 +28,8 @@ const RegisterForm = () => {
         <TextInput
           style={styles.input}
           placeholder="Username"
-          value={email}
-          onChangeText={onChangeEmail}
+          value={username}
+          onChangeText={onChangeUsername}
         />
         <TextInput
           style={styles.input}

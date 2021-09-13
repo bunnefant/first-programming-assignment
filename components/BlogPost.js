@@ -1,19 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 
-const BlogPost = (props) => {
+const BlogPost = ({username, title, text, likes}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.username}>
-        {props.username}
+        {username}
       </Text>
       <Text style={styles.text}>
-        {props.title}
+        {title}
       </Text>
       <Text style={styles.text}>
-        {props.text}
+        {text}
+      </Text>
+      <Text style={styles.text}>
+        {likes}
       </Text>
     </View>
   );

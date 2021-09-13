@@ -1,23 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { Link, useHistory } from 'react-router-native';
+import { useHistory } from 'react-router-native';
 import { useAuth } from '../contexts/AuthContext'
 
 
 export default function LoginForm() {
 
   const { loginUser } = useAuth()
-  const [email, onChangeEmail] = useState('')
+  const [username, onChangeUsername] = useState('')
   const [password, onChangePassword] = useState('')
   const history = useHistory()
 
   const handlePress = async () => {
     try {
-      await loginUser(email, password)
+      await loginUser(username, password)
       history.push('/')
     } catch (err) {
-      console.log(process.env.BACKEND_URL)
       console.log(err.message)
     }
   }
@@ -28,9 +26,9 @@ export default function LoginForm() {
         <Text style={styles.welcome}>Login Here</Text>
         <TextInput
           style={styles.input}
-          value={email}
-          placeholder="Email"
-          onChangeText={onChangeEmail}
+          value={username}
+          placeholder="username"
+          onChangeText={onChangeUsername}
         />
         <TextInput
           style={styles.input}
@@ -39,7 +37,6 @@ export default function LoginForm() {
           secureTextEntry={true}
           onChangeText={onChangePassword}
         />
-        <StatusBar style="auto" />
       </View>
       <View style={styles.container}>
         <TouchableOpacity
@@ -53,13 +50,6 @@ export default function LoginForm() {
           onPress={() => history.push("/register")}
         >
           <Text>Sign Up</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.userButton}
-          onPress={() => history.push("/home")}
-        >
-          <Text>Go to home screen</Text>
         </TouchableOpacity>
       </View>
     </>
