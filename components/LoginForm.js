@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { Link } from 'react-router-native';
+import { Link, useHistory } from 'react-router-native';
 import { useAuth } from '../contexts/AuthContext'
 
 
@@ -10,10 +10,12 @@ export default function LoginForm() {
   const { loginUser } = useAuth()
   const [email, onChangeEmail] = useState('')
   const [password, onChangePassword] = useState('')
+  const history = useHistory()
 
   const handlePress = async () => {
     try {
       await loginUser(email, password)
+      history.push('/')
     } catch (err) {
       console.log(err.message)
     }
@@ -45,10 +47,13 @@ export default function LoginForm() {
         >
           <Text>Login</Text>
         </TouchableOpacity>
-        <Link to='/register'>
+        <TouchableOpacity
+          style={styles.userButton}
+          onPress={() => history.push("/register")}
+        >
           <Text>Sign Up</Text>
-        </Link>
-      </View>
+        </TouchableOpacity>
+      </View >
     </>
   );
 }
@@ -79,3 +84,5 @@ const styles = StyleSheet.create({
     padding: 15
   },
 });
+
+export default LoginForm;
