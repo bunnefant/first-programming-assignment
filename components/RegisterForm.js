@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 15
   },
-  input : {
+  input: {
     backgroundColor: '#fff',
     marginBottom: 10,
     textAlign: 'center',
     padding: 15
   },
-  userButton : {
+  userButton: {
     backgroundColor: '#fff',
     marginBottom: 10,
     textAlign: 'center',
