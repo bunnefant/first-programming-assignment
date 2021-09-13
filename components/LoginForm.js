@@ -54,7 +54,7 @@ export default function LoginForm() {
         >
           <Text>Sign Up</Text>
         </TouchableOpacity>
-<<<<<<< HEAD
+
         <TouchableOpacity
           style={styles.userButton}
           onPress={() => history.push("/home")}
@@ -62,9 +62,6 @@ export default function LoginForm() {
           <Text>Go to home screen</Text>
         </TouchableOpacity>
       </View>
-=======
-      </View >
->>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
     </>
   );
 }
@@ -83,29 +80,19 @@ const styles = StyleSheet.create({
     color: '#fbfbfb',
     padding: 30
   },
-<<<<<<< HEAD
   input : {
     backgroundColor: '#fbfbfb',
     borderColor: '#56b081',
     borderWidth: 3,
     borderRadius: 9,
-=======
-  input: {
-    backgroundColor: '#fff',
->>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
     marginBottom: 10,
     marginTop: 10,
     textAlign: 'center',
     padding: 15
   },
-<<<<<<< HEAD
   userButton : {
     backgroundColor: '#56b081',
     borderRadius: 9,
-=======
-  userButton: {
-    backgroundColor: '#fff',
->>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
     marginBottom: 10,
     textAlign: 'center',
     padding: 15

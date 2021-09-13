@@ -24,30 +24,19 @@ const RegisterForm = () => {
   return (
     <>
       <View style={styles.container}>
-<<<<<<< HEAD
         <Text style={styles.welcome}>Register Here</Text>
         <TextInput
           style={styles.input}
           placeholder="Username"
-=======
-        <Text style={styles.welcome}>Register</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
           value={email}
           onChangeText={onChangeEmail}
->>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
-<<<<<<< HEAD
-          secureTextEntry
-=======
           secureTextEntry={true}
           value={password}
           onChangeText={onChangePassword}
->>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
         />
         <StatusBar style="auto" />
       </View>
@@ -85,7 +74,6 @@ const styles = StyleSheet.create({
     color: '#fbfbfb',
     padding: 30
   },
-<<<<<<< HEAD
   input : {
     backgroundColor: '#fbfbfb',
     borderColor: '#56b081',
@@ -99,16 +87,6 @@ const styles = StyleSheet.create({
   userButton : {
     backgroundColor: '#56b081',
     borderRadius: 9,
-=======
-  input: {
-    backgroundColor: '#fff',
-    marginBottom: 10,
-    textAlign: 'center',
-    padding: 15
-  },
-  userButton: {
-    backgroundColor: '#fff',
->>>>>>> e734086f6992b950a740f8548fbba19d2fb12094
     marginBottom: 10,
     textAlign: 'center',
     padding: 15
