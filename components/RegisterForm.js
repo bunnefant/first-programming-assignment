@@ -49,7 +49,7 @@ const RegisterForm = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => history.push("/login")}
+          onPress={() => history.push("/")}
           style={styles.userButton}
         >
           <Text>Already Have an Account?</Text>
